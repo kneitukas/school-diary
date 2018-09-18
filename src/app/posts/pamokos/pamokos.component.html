@@ -1,0 +1,25 @@
+
+<mat-card>
+    <form [formGroup]="form" (submit)="onSavePost()" *ngIf='!isLoading'>
+      <mat-form-field>
+        <input
+        formControlName="title"
+         matInput type="text"
+         placeholder="Pamoka">
+        <mat-error *ngIf="form.get('title').invalid">Please enter a post title</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+        formControlName="content"
+         matInput rows="6"
+            placeholder="Description" >
+
+        <mat-error *ngIf="form.get('content').invalid">Please add some content</mat-error>
+      </mat-form-field>
+
+
+      <button color="primary" mat-raised-button type='submit'>Pridėti Studentą</button>
+    </form>
+
+  </mat-card>

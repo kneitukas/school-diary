@@ -1,0 +1,19 @@
+:host {
+  text-align: center;
+}
+
+button {
+  margin: auto;
+}
+
+input::placeholder {
+  text-align: center;
+  margin: auto;
+}
+
+mat-form-field,
+input {
+  width: 100%;
+}
+
+

@@ -1,4 +1,29 @@
-<textarea rows="6" [(ngModel)]= 'enteredValue' ></textarea>
-<hr>
-<button (click)='onAddPost()'>Save Post</button>
-<p>{{content}}</p>
+
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSavePost()" *ngIf='!isLoading'>
+    <mat-form-field>
+      <input
+      formControlName="title"
+       matInput type="text"
+       placeholder="Vardas">
+      <mat-error *ngIf="form.get('title').invalid">Please enter a post title</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+      formControlName="content"
+       matInput rows="6"
+          placeholder="Pavardė" >
+
+      <mat-error *ngIf="form.get('content').invalid">Please add some content</mat-error>
+    </mat-form-field>
+
+
+    <button color="primary" mat-raised-button type='submit'>Pridėti Studentą</button>
+  </form>
+
+</mat-card>
+
+
+

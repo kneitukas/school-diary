@@ -1,0 +1,16 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion *ngIf="posts.length > 0 && !isLoading">
+  <mat-expansion-panel  *ngFor='let post of posts'>
+    <mat-expansion-panel-header >
+      <h4 class='vardas'>{{post.title}}</h4>
+      <h4 class='pavarde'>{{post.content}}</h4>
+    </mat-expansion-panel-header>
+
+    <mat-action-row *ngIf='userIsAuthenticated'>
+        <a mat-button color="warn" [routerLink]="['/edit',post.id]">EDIT</a>
+        <button mat-button color="primary" (click)="onDelete(post.id)">DELETE</button>
+        <button mat-button color="primary" (click)="gradeStudent(post.id)">Ivertinimas</button>
+      </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="mat-body-1" *ngIf="posts.length === 0 && !isLoading">Nera studentu</p>

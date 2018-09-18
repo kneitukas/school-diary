@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span>
+      <a mat-button routerLink="/">Sarašas</a>
+  </span>
+  <span class="spacer"></span>
+<ul>
+    <li *ngIf="userIsAuthenticated">
+        <a mat-button routerLink="/pamokos" routerLinkActive="mat-accent">Pridėti Pamoką</a>
+      </li>
+  <li *ngIf="userIsAuthenticated">
+    <a mat-button routerLink="/create" routerLinkActive="mat-accent">Naujas Studentas</a>
+  </li>
+  <li *ngIf="!userIsAuthenticated">
+    <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+  </li>
+  <li *ngIf="!userIsAuthenticated">
+    <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign Up</a>
+  </li>
+  <li *ngIf="userIsAuthenticated">
+    <button mat-button (click)="onLogout()">Logout</button>
+  </li>
+</ul>
+</mat-toolbar>

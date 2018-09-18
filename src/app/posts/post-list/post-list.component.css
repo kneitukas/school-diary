@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  margin-top: 1.5rem;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+
+.vardas {
+  margin-right: 10px;
+}

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>{{data.name}} {{data.lastName}}</h1>
+<div mat-dialog-content>
+
+    <mat-form-field>
+        <mat-select placeholder="Pamokos">
+          <mat-option *ngFor="let lesson of lessons">
+            {{lesson}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  <mat-form-field>
+
+    <input matInput placeholder="Ivertinimas" autocomplete="off">
+
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
