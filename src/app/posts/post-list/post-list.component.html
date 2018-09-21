@@ -6,7 +6,7 @@
       <h4 class='pavarde'>{{post.content}}</h4>
     </mat-expansion-panel-header>
 
-    <mat-action-row *ngIf='userIsAuthenticated'>
+    <mat-action-row *ngIf='userIsAuthenticated && userId === post.creator'>
         <a mat-button color="warn" [routerLink]="['/edit',post.id]">EDIT</a>
         <button mat-button color="primary" (click)="onDelete(post.id)">DELETE</button>
         <button mat-button color="primary" (click)="gradeStudent(post.id)">Ivertinimas</button>

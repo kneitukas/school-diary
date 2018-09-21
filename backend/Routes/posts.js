@@ -1,64 +1,16 @@
 const express = require('express');
-const Post = require('../models/post')
 const checkAuth = require('../middleware/check-auth')
 const router = express.Router();
+const PostsController = require('../controllers/posts')
 
-router.post("", checkAuth, (req,res,next) => {
-  const post = new Post({
-    title: req.body.title,
-    content: req.body.content
-  });
-  post.save().then((result) => {
-    res.status(201).json({
-      message: 'post added succesfully',
-      postId: result._id
-    });
-  });
-});
+router.post("", checkAuth, PostsController.newPost);
 
-router.put("/:id", (req,res,next) => {
-  const post = new Post({
-    _id: req.body.id,
-    title: req.body.title,
-    content: req.body.content
-  })
-  Post.updateOne({_id: req.params.id }, post ).then(result => {
-    console.log(result);
-    res.status(200).json({message: 'Update successful'})
-  }).catch((err) => {
-    console.log(err)
-  })
-});
+router.put("/:id", PostsController.editPost);
 
-router.get('', (req,res,next) => {
-  Post.find()
-  .then((documents) => {
-    res.status(200).json({
-      message: 'Posts fetched succesfully',
-      posts: documents
-    });
-  }).catch((e) => {
-    console.log(e)
-  })
-});
+router.get('', PostsController.getPosts);
 
-router.get('/:id', (req,res,next) => {
-  Post.findById(req.params.id).then(post => {
-    if (post) {
-      res.status(200).json(post);
-    } else {
-      res.status(404).json({message: 'Post Not Found!'})
-    }
-  })
-})
+router.get('/:id', PostsController.getPosts)
 
-router.delete("/:id", checkAuth, (req,res,next) => {
-  Post.deleteOne({_id: req.params.id}).then(result => {
-    console.log(result);
-    res.status(200).json({message:'Post deleted!'})
-  }).catch((e) => {
-    console.log(e)
-  })
-});
+router.delete("/:id", checkAuth, PostsController.deletePost );
 
 module.exports = router;

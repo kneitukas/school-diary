@@ -10,7 +10,7 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 // mongoose.connect('mongodb://localhost:27017/MEAN')
-mongoose.connect('mongodb+srv://kneitukas:HrfbWQGhPSdn6nJs@cluster0-roebh.mongodb.net/node-angular?retryWrites=true')
+mongoose.connect(`mongodb+srv://kneitukas:${process.env.MONGO_ATLAS_PW}@cluster0-roebh.mongodb.net/node-angular?retryWrites=true`)
 .then(() => {
   console.log("Connected to database")
 }).catch((e) => {

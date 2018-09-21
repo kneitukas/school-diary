@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PostsService } from '../posts.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { PostsService } from "../posts.service";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 
 
 
 @Component({
-  selector: 'app-pamokos',
-  templateUrl: './pamokos.component.html',
-  styleUrls: ['./pamokos.component.css']
+  selector: "app-pamokos",
+  templateUrl: "./pamokos.component.html",
+  styleUrls: ["./pamokos.component.css"]
 })
 export class PamokosComponent implements OnInit {
   form: FormGroup;
-  public mode = 'create';
+  public mode = "create";
   private postId: string;
   public post: any;
 
@@ -32,13 +32,13 @@ export class PamokosComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-       if (this.mode === 'create') {
+       if (this.mode === "create") {
       this.postService.addLesson(this.form.value.title, this.form.value.content);
     } else {
       this.postService.updatePost(this.postId, this.form.value.title, this.form.value.content);
     }
       this.form.reset();
-      alert('Pamoka prideta sekmingai!');
+      alert("Pamoka prideta sekmingai!");
 
   }
 
